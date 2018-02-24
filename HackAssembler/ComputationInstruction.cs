@@ -1,27 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HackAssembler
 {
     public class ComputationInstruction : Instruction
     {
-        private readonly string Destination = String.Empty;
+        private readonly string destination = String.Empty;
 
-        private readonly string Computation = String.Empty;
+        private readonly string computation = String.Empty;
 
-        private readonly string Jump = String.Empty;
+        private readonly string jump = String.Empty;
 
         public ComputationInstruction(string destination, string computation, string jump)
         {
-            this.Destination = destination;
+            this.destination = destination;
 
-            this.Computation = computation;
+            this.computation = computation;
 
-            this.Jump = jump;
+            this.jump = jump;
         }
 
         public string GetInstructionAsBinary()
         {
             return String.Empty;
+        }
+
+        public Queue<string> GetInstructionQueue()
+        {
+            Queue<string> instructionQueue = new Queue<string>();
+
+            instructionQueue.Enqueue(computation);
+
+            instructionQueue.Enqueue(destination);
+
+            instructionQueue.Enqueue(jump);
+
+            return instructionQueue;
         }
     }
 }
