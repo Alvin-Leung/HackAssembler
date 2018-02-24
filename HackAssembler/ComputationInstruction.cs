@@ -1,14 +1,27 @@
-﻿namespace HackAssembler
+﻿using System;
+
+namespace HackAssembler
 {
     public class ComputationInstruction : Instruction
     {
+        private readonly string Destination = String.Empty;
+
+        private readonly string Computation = String.Empty;
+
+        private readonly string Jump = String.Empty;
+
         public ComputationInstruction(string destination, string computation, string jump)
         {
-            CommandQueue.Enqueue(destination);
+            this.Destination = destination;
 
-            CommandQueue.Enqueue(computation);
+            this.Computation = computation;
 
-            CommandQueue.Enqueue(jump);
+            this.Jump = jump;
+        }
+
+        public string GetInstructionAsBinary()
+        {
+            return String.Empty;
         }
     }
 }

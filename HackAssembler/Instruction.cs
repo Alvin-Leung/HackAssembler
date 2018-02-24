@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace HackAssembler
 {
-    public class Instruction
+    public interface Instruction
     {
-        static public Instruction EmptyInstruction = new Instruction();
-
-        public Queue<string> CommandQueue = new Queue<string>();
+        string GetInstructionAsBinary();
     }
 }

@@ -1,12 +1,19 @@
-﻿namespace HackAssembler
+﻿using System;
+
+namespace HackAssembler
 {
     public class AddressInstruction : Instruction
     {
+        private readonly string Address = String.Empty;
+
         public AddressInstruction(string address)
         {
-            CommandQueue.Enqueue("@");
+            this.Address = address;
+        }
 
-            CommandQueue.Enqueue(address);
+        public string GetInstructionAsBinary()
+        {
+            return String.Empty;
         }
     }
 }
