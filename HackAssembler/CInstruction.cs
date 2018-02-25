@@ -5,19 +5,19 @@ namespace HackAssembler
 {
     public class CInstruction : Instruction
     {
-        private readonly string destination = String.Empty;
+        private DestinationInstructionElement destinationInstructionElement;
 
-        private readonly string computation = String.Empty;
+        private ComputationInstructionElement computationInstructionElement;
 
-        private readonly string jump = String.Empty;
+        private JumpInstructionElement jumpInstructionElement;
 
         public CInstruction(string destination, string computation, string jump)
         {
-            this.destination = destination;
+            this.destinationInstructionElement = new DestinationInstructionElement(destination);
 
-            this.computation = computation;
+            this.computationInstructionElement = new ComputationInstructionElement(computation);
 
-            this.jump = jump;
+            this.jumpInstructionElement = new JumpInstructionElement(jump);
         }
 
         public string GetInstructionAsBinary()
@@ -25,15 +25,15 @@ namespace HackAssembler
             return String.Empty;
         }
 
-        public Queue<string> GetInstructionQueue()
+        public Queue<InstructionElement> GetInstructionElementQueue()
         {
-            Queue<string> instructionQueue = new Queue<string>();
+            Queue<InstructionElement> instructionQueue = new Queue<InstructionElement>();
 
-            instructionQueue.Enqueue(computation);
+            instructionQueue.Enqueue(this.computationInstructionElement);
 
-            instructionQueue.Enqueue(destination);
+            instructionQueue.Enqueue(this.destinationInstructionElement);
 
-            instructionQueue.Enqueue(jump);
+            instructionQueue.Enqueue(this.jumpInstructionElement);
 
             return instructionQueue;
         }

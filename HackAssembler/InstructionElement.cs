@@ -4,7 +4,7 @@ namespace HackAssembler
 {
     public abstract class InstructionElement
     {
-        protected string instructionElement { get; set; } = String.Empty;
+        public readonly string instructionElement = String.Empty;
 
         public InstructionElement(string instructionElement)
         {

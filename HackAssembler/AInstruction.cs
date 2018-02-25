@@ -5,11 +5,11 @@ namespace HackAssembler
 {
     public class AInstruction : Instruction
     {
-        private readonly string address = String.Empty;
+        private AddressInstructionElement addressInstructionElement;
 
         public AInstruction(string address)
         {
-            this.address = address;
+            this.addressInstructionElement = new AddressInstructionElement(address);
         }
 
         public string GetInstructionAsBinary()
@@ -17,15 +17,13 @@ namespace HackAssembler
             return String.Empty;
         }
 
-        public Queue<string> GetInstructionQueue()
+        public Queue<InstructionElement> GetInstructionElementQueue()
         {
-            Queue<string> instructionQueue = new Queue<string>();
+            Queue<InstructionElement> instructionElementQueue = new Queue<InstructionElement>();
 
-            instructionQueue.Enqueue("@");
+            instructionElementQueue.Enqueue(this.addressInstructionElement);
 
-            instructionQueue.Enqueue(this.address);
-
-            return instructionQueue;
+            return instructionElementQueue;
         }
     }
 }

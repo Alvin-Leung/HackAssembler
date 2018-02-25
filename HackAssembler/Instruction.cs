@@ -6,6 +6,6 @@ namespace HackAssembler
     {
         string GetInstructionAsBinary();
 
-        Queue<string> GetInstructionQueue();
+        Queue<InstructionElement> GetInstructionElementQueue();
     }
 }
