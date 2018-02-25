@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HackAssembler
 {
-    public class ComputationInstruction : Instruction
+    public class CInstruction : Instruction
     {
         private readonly string destination = String.Empty;
 
@@ -11,7 +11,7 @@ namespace HackAssembler
 
         private readonly string jump = String.Empty;
 
-        public ComputationInstruction(string destination, string computation, string jump)
+        public CInstruction(string destination, string computation, string jump)
         {
             this.destination = destination;
 

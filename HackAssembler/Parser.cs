@@ -74,7 +74,7 @@ namespace HackAssembler
                 jump = compAndJumpCommand[1];
             }
 
-            cInstruction = new ComputationInstruction(destination, computation, jump);
+            cInstruction = new CInstruction(destination, computation, jump);
 
             return cInstruction;
         }
@@ -83,7 +83,7 @@ namespace HackAssembler
         {
             string address = assemblyCommand.Remove(0, 1);
 
-            Instruction addressInstruction = new AddressInstruction(address);
+            Instruction addressInstruction = new AInstruction(address);
 
             return addressInstruction;
         }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace HackAssembler
 {
-    public class AddressInstruction : Instruction
+    public class AInstruction : Instruction
     {
         private readonly string address = String.Empty;
 
-        public AddressInstruction(string address)
+        public AInstruction(string address)
         {
             this.address = address;
         }

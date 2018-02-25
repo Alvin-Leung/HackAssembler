@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressInstruction.cs" />
-    <Compile Include="ComputationInstruction.cs" />
+    <Compile Include="AInstruction.cs" />
+    <Compile Include="CInstruction.cs" />
     <Compile Include="Instruction.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
