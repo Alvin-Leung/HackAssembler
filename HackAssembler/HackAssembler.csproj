@@ -42,9 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressInstructionElement.cs" />
     <Compile Include="AInstruction.cs" />
     <Compile Include="CInstruction.cs" />
+    <Compile Include="ComputationInstructionElement.cs" />
+    <Compile Include="DestinationInstructionElement.cs" />
     <Compile Include="Instruction.cs" />
+    <Compile Include="InstructionElement.cs" />
+    <Compile Include="JumpInstructionElement.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
