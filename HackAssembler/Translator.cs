@@ -76,7 +76,9 @@ namespace HackAssembler
 
             string addressAsBinaryString = Convert.ToString(addressAsInteger, 2);
 
-            return "0" + addressAsBinaryString;
+            string aInstruction = addressAsBinaryString.PadLeft(16, '0');
+
+            return aInstruction;
         }
 
         static public string GetBinaryDestinationInstruction(string destinationInstruction)
