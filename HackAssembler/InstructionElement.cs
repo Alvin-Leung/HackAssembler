@@ -4,11 +4,11 @@ namespace HackAssembler
 {
     public abstract class InstructionElement
     {
-        protected string instruction { get; set; } = String.Empty;
+        protected string instructionElement { get; set; } = String.Empty;
 
-        public InstructionElement(string instruction)
+        public InstructionElement(string instructionElement)
         {
-            this.instruction = instruction;
+            this.instructionElement = instructionElement;
         }
 
         public abstract string GetBinary();

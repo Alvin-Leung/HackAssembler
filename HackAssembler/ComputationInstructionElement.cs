@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HackAssembler
+﻿namespace HackAssembler
 {
     public class ComputationInstructionElement : InstructionElement
     {
@@ -8,7 +6,7 @@ namespace HackAssembler
 
         public override string GetBinary()
         {
-            throw new NotImplementedException();
+            return Translator.GetBinaryComputationInstruction(this.instructionElement);
         }
     }
 }
