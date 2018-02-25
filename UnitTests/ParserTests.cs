@@ -17,11 +17,9 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(correctlyFormattedAddressCommand);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("@", instructionQueue.Dequeue());
-
-            Assert.AreEqual("100", instructionQueue.Dequeue());
+            Assert.AreEqual("100", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -31,11 +29,9 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(largestAddressCommandPossible);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("@", instructionQueue.Dequeue());
-
-            Assert.AreEqual("24576", instructionQueue.Dequeue());
+            Assert.AreEqual("24576", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -45,11 +41,9 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(smallestAddressCommandPossible);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("@", instructionQueue.Dequeue());
-
-            Assert.AreEqual("0", instructionQueue.Dequeue());
+            Assert.AreEqual("0", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -86,13 +80,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithSpaces);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("D+1", instructionQueue.Dequeue());
+            Assert.AreEqual("D+1", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("M", instructionQueue.Dequeue());
+            Assert.AreEqual("M", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("JEQ", instructionQueue.Dequeue());
+            Assert.AreEqual("JEQ", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -102,13 +96,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutSpaces);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("D+1", instructionQueue.Dequeue());
+            Assert.AreEqual("D+1", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("MD", instructionQueue.Dequeue());
+            Assert.AreEqual("MD", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("JLT", instructionQueue.Dequeue());
+            Assert.AreEqual("JLT", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -118,13 +112,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithWeirdSpacing);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("A+1", instructionQueue.Dequeue());
+            Assert.AreEqual("A+1", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("A", instructionQueue.Dequeue());
+            Assert.AreEqual("A", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("JGE", instructionQueue.Dequeue());
+            Assert.AreEqual("JGE", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -134,13 +128,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutJump);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("D&A", instructionQueue.Dequeue());
+            Assert.AreEqual("D&A", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("D", instructionQueue.Dequeue());
+            Assert.AreEqual("D", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("", instructionQueue.Dequeue());
+            Assert.AreEqual("", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -150,13 +144,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("A-1", instructionQueue.Dequeue());
+            Assert.AreEqual("A-1", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("", instructionQueue.Dequeue());
+            Assert.AreEqual("", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("JLE", instructionQueue.Dequeue());
+            Assert.AreEqual("JLE", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
@@ -166,13 +160,13 @@ namespace UnitTests
 
             Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
 
-            Queue<string> instructionQueue = instruction.GetInstructionQueue();
+            Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
-            Assert.AreEqual("A-D", instructionQueue.Dequeue());
+            Assert.AreEqual("A-D", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("", instructionQueue.Dequeue());
+            Assert.AreEqual("", instructionQueue.Dequeue().instructionElement);
 
-            Assert.AreEqual("", instructionQueue.Dequeue());
+            Assert.AreEqual("", instructionQueue.Dequeue().instructionElement);
         }
 
         [TestMethod]
