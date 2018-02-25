@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HackAssembler
 {
@@ -12,11 +11,6 @@ namespace HackAssembler
             this.addressInstructionElement = new AddressInstructionElement(address);
         }
 
-        public string GetInstructionAsBinary()
-        {
-            return String.Empty;
-        }
-
         public Queue<InstructionElement> GetInstructionElementQueue()
         {
             Queue<InstructionElement> instructionElementQueue = new Queue<InstructionElement>();
@@ -24,6 +18,13 @@ namespace HackAssembler
             instructionElementQueue.Enqueue(this.addressInstructionElement);
 
             return instructionElementQueue;
+        }
+
+        public string GetInstructionAsBinary()
+        {
+            Queue<InstructionElement> instructionElementQueue = GetInstructionElementQueue();
+
+            return Translator.GetCompleteBinaryInstruction(instructionElementQueue);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace HackAssembler
 {
@@ -11,6 +10,8 @@ namespace HackAssembler
 
         private JumpInstructionElement jumpInstructionElement;
 
+        private readonly string startBits = "111";
+
         public CInstruction(string destination, string computation, string jump)
         {
             this.destinationInstructionElement = new DestinationInstructionElement(destination);
@@ -20,22 +21,24 @@ namespace HackAssembler
             this.jumpInstructionElement = new JumpInstructionElement(jump);
         }
 
-        public string GetInstructionAsBinary()
-        {
-            return String.Empty;
-        }
-
         public Queue<InstructionElement> GetInstructionElementQueue()
         {
-            Queue<InstructionElement> instructionQueue = new Queue<InstructionElement>();
+            Queue<InstructionElement> instructionElementQueue = new Queue<InstructionElement>();
 
-            instructionQueue.Enqueue(this.computationInstructionElement);
+            instructionElementQueue.Enqueue(this.computationInstructionElement);
 
-            instructionQueue.Enqueue(this.destinationInstructionElement);
+            instructionElementQueue.Enqueue(this.destinationInstructionElement);
 
-            instructionQueue.Enqueue(this.jumpInstructionElement);
+            instructionElementQueue.Enqueue(this.jumpInstructionElement);
 
-            return instructionQueue;
+            return instructionElementQueue;
+        }
+
+        public string GetInstructionAsBinary()
+        {
+            Queue<InstructionElement> instructionElementQueue = GetInstructionElementQueue();
+
+            return startBits + Translator.GetCompleteBinaryInstruction(instructionElementQueue);
         }
     }
 }

@@ -116,5 +116,17 @@ namespace HackAssembler
                 throw new Exception("Jump instruction '" + jumpInstruction + "' does not exist in instruction set");
             }
         }
+
+        static public string GetCompleteBinaryInstruction(Queue<InstructionElement> instructionElementQueue)
+        {
+            string binaryInstruction = String.Empty;
+
+            foreach (InstructionElement instructionElement in instructionElementQueue)
+            {
+                binaryInstruction += instructionElement.GetBinary();
+            }
+
+            return binaryInstruction;
+        }
     }
 }
