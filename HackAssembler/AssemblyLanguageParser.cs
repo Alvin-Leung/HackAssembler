@@ -1,9 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HackAssembler
 {
     static public class AssemblyLanguageParser
     {
+        static public string[] GetBinaryInstructions(string[] assemblyInstructions)
+        {
+            int lineNumber = 1;
+
+            try
+            {
+                List<string> binaryInstructionArray = new List<string>();
+
+                Instruction newInstruction;
+
+                string newInstructionAsBinary;
+
+                foreach (string assemblyInstruction in assemblyInstructions)
+                {
+                    newInstruction = GetInstructionFromAssemblyCommand(assemblyInstruction);
+
+                    newInstructionAsBinary = newInstruction.GetInstructionAsBinary();
+
+                    binaryInstructionArray.Add(newInstructionAsBinary);
+
+                    lineNumber++;
+                }
+
+                return binaryInstructionArray.ToArray();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error on line " + lineNumber.ToString() + ": " + e.Message);
+            }
+        }
+
         static public Instruction GetInstructionFromAssemblyCommand(string assemblyCommand)
         {
             try
