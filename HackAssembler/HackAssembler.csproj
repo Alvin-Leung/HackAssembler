@@ -51,7 +51,7 @@
     <Compile Include="Instruction.cs" />
     <Compile Include="InstructionElement.cs" />
     <Compile Include="JumpInstructionElement.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="AssemblyLanguageParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SymbolTable.cs" />

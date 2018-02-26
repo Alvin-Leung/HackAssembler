@@ -2,9 +2,9 @@
 
 namespace HackAssembler
 {
-    public class Parser
+    static public class AssemblyLanguageParser
     {
-        public Instruction GetInstructionFromAssemblyCommand(string assemblyCommand)
+        static public Instruction GetInstructionFromAssemblyCommand(string assemblyCommand)
         {
             try
             {
@@ -18,7 +18,7 @@ namespace HackAssembler
             }
         }
 
-        private Instruction TryGetInstructionFromAssemblyCommand(string assemblyCommand)
+        static private Instruction TryGetInstructionFromAssemblyCommand(string assemblyCommand)
         {
             Instruction instruction;
 
@@ -38,7 +38,7 @@ namespace HackAssembler
             return instruction;
         }
 
-        private Instruction GetComputationInstruction(string assemblyCommand)
+        static private Instruction GetComputationInstruction(string assemblyCommand)
         {
             Instruction cInstruction;
 
@@ -79,7 +79,7 @@ namespace HackAssembler
             return cInstruction;
         }
 
-        private Instruction GetAddressInstruction(string assemblyCommand)
+        static private Instruction GetAddressInstruction(string assemblyCommand)
         {
             string address = assemblyCommand.Remove(0, 1);
 

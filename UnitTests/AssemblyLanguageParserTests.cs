@@ -6,16 +6,14 @@ using HackAssembler;
 namespace UnitTests
 {
     [TestClass]
-    public class ParserTests
+    public class AssemblyLanguageParserTests
     {
-        private Parser parser = new Parser();
-
         [TestMethod]
         public void Parser_InputCorrectlyFormattedAddressCommand_GetCorrectlyParsedInstruction()
         {
             string correctlyFormattedAddressCommand = "@100";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(correctlyFormattedAddressCommand);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(correctlyFormattedAddressCommand);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -27,7 +25,7 @@ namespace UnitTests
         {
             string largestAddressCommandPossible = "@24576";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(largestAddressCommandPossible);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(largestAddressCommandPossible);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -39,7 +37,7 @@ namespace UnitTests
         {
             string smallestAddressCommandPossible = "@0";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(smallestAddressCommandPossible);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(smallestAddressCommandPossible);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -52,7 +50,7 @@ namespace UnitTests
         {
             string addressCommandWithoutAddress = "@";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(addressCommandWithoutAddress);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(addressCommandWithoutAddress);
         }
 
         [TestMethod]
@@ -61,7 +59,7 @@ namespace UnitTests
         {
             string addressCommandWithInvalidAddress = "@InvalidAddress";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(addressCommandWithInvalidAddress);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(addressCommandWithInvalidAddress);
         }
 
         [TestMethod]
@@ -70,7 +68,7 @@ namespace UnitTests
         {
             string emptyString = String.Empty;
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(emptyString);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(emptyString);
         }
 
         [TestMethod]
@@ -78,7 +76,7 @@ namespace UnitTests
         {
             string validComputationCommandWithSpaces = "M = D+1 ; JEQ";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithSpaces);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithSpaces);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -94,7 +92,7 @@ namespace UnitTests
         {
             string validComputationCommandWithoutSpaces = "MD=D+1;JLT";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutSpaces);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutSpaces);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -110,7 +108,7 @@ namespace UnitTests
         {
             string validComputationCommandWithWeirdSpacing = "A =    A+1 ;             JGE";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithWeirdSpacing);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithWeirdSpacing);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -126,7 +124,7 @@ namespace UnitTests
         {
             string validComputationCommandWithoutJump = "D=D&A";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutJump);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutJump);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -142,7 +140,7 @@ namespace UnitTests
         {
             string validComputationCommandWithoutDestination = "A-1; JLE";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -158,7 +156,7 @@ namespace UnitTests
         {
             string validComputationCommandWithoutDestination = "A-D";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(validComputationCommandWithoutDestination);
 
             Queue<InstructionElement> instructionQueue = instruction.GetInstructionElementQueue();
 
@@ -175,7 +173,7 @@ namespace UnitTests
         {
             string invalidComputationCommand = "M=5+A;JUMP";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(invalidComputationCommand);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(invalidComputationCommand);
         }
 
         [TestMethod]
@@ -184,7 +182,7 @@ namespace UnitTests
         {
             string inputInvalidComputationCommandWithoutDestination = "1060;JmP";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(inputInvalidComputationCommandWithoutDestination);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(inputInvalidComputationCommandWithoutDestination);
         }
 
         [TestMethod]
@@ -193,7 +191,7 @@ namespace UnitTests
         {
             string invalidComputationCommandWithoutJump = "dest=#$%2";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(invalidComputationCommandWithoutJump);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(invalidComputationCommandWithoutJump);
         }
 
         [TestMethod]
@@ -202,7 +200,7 @@ namespace UnitTests
         {
             string invalidComputationCommandWithoutDestinationOrJump = "helloWorld";
 
-            Instruction instruction = parser.GetInstructionFromAssemblyCommand(invalidComputationCommandWithoutDestinationOrJump);
+            Instruction instruction = AssemblyLanguageParser.GetInstructionFromAssemblyCommand(invalidComputationCommandWithoutDestinationOrJump);
         }
     }
 }
