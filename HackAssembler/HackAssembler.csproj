@@ -47,6 +47,7 @@
     <Compile Include="CInstruction.cs" />
     <Compile Include="ComputationInstructionElement.cs" />
     <Compile Include="DestinationInstructionElement.cs" />
+    <Compile Include="AssemblyFileParser.cs" />
     <Compile Include="Instruction.cs" />
     <Compile Include="InstructionElement.cs" />
     <Compile Include="JumpInstructionElement.cs" />
