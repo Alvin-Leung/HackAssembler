@@ -10,7 +10,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryAddressInstruction_InputValidAddress_GetAInstruction()
         {
-            string aInstruction = Translator.GetBinaryAddressInstruction("1234");
+            string aInstruction = Translator.GetAddressInstructionAsMachineCode("1234");
 
             Assert.AreEqual("0000010011010010", aInstruction);
         }
@@ -18,7 +18,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryAddressInstruction_InputSmallestValidAddress_GetAInstruction()
         {
-            string aInstruction = Translator.GetBinaryAddressInstruction("0");
+            string aInstruction = Translator.GetAddressInstructionAsMachineCode("0");
 
             Assert.AreEqual("0000000000000000", aInstruction);
         }
@@ -26,7 +26,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryAddressInstruction_InputLargestValidAddress_GetAInstruction()
         {
-            string aInstruction = Translator.GetBinaryAddressInstruction("24576");
+            string aInstruction = Translator.GetAddressInstructionAsMachineCode("24576");
 
             Assert.AreEqual("0110000000000000", aInstruction);
         }
@@ -34,7 +34,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryDestinationInstruction_InputValidDestinationInstruction_GetBinaryEquivalent()
         {
-            string binaryDestinationInstruction = Translator.GetBinaryDestinationInstruction("D");
+            string binaryDestinationInstruction = Translator.GetDestinationInstructionAsMachineCode("D");
 
             Assert.AreEqual("010", binaryDestinationInstruction);
         }
@@ -42,7 +42,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryComputationInstruction_InputValidComputationInstruction_GetBinaryEquivalent()
         {
-            string binaryComputationInstruction = Translator.GetBinaryComputationInstruction("D&A");
+            string binaryComputationInstruction = Translator.GetComputationInstructionAsMachineCode("D&A");
 
             Assert.AreEqual("0000000", binaryComputationInstruction);
         }
@@ -50,7 +50,7 @@ namespace UnitTests
         [TestMethod]
         public void GetBinaryJumpInstruction_InputValidJumpInstruction_GetBinaryEquivalent()
         {
-            string binaryJumpInstruction = Translator.GetBinaryJumpInstruction("JGE");
+            string binaryJumpInstruction = Translator.GetJumpInstructionAsMachineCode("JGE");
 
             Assert.AreEqual("011", binaryJumpInstruction);
         }
@@ -59,21 +59,21 @@ namespace UnitTests
         [ExpectedException(typeof(Exception))]
         public void GetBinaryDestinationInstruction_InputInvalidInstruction_ThrowException()
         {
-            Translator.GetBinaryComputationInstruction("HelloWorld");
+            Translator.GetComputationInstructionAsMachineCode("HelloWorld");
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void GetBinaryComputationInstruction_InputInvalidInstruction_ThrowException()
         {
-            Translator.GetBinaryComputationInstruction("HelloWorld");
+            Translator.GetComputationInstructionAsMachineCode("HelloWorld");
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void GetBinaryJumpInstruction_InputInvalidInstruction_ThrowException()
         {
-            Translator.GetBinaryJumpInstruction("HelloWorld");
+            Translator.GetJumpInstructionAsMachineCode("HelloWorld");
         }
     }
 }

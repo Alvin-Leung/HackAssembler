@@ -5,30 +5,30 @@ namespace HackAssembler
 {
     static public class AssemblyLanguageParser
     {
-        static public string[] GetBinaryInstructions(string[] assemblyInstructions)
+        static public string[] GetMachineCodeArray(string[] assemblyInstructions)
         {
             int lineNumber = 1;
 
             try
             {
-                List<string> binaryInstructionArray = new List<string>();
+                List<string> machineCodeInstructionArray = new List<string>();
 
                 Instruction newInstruction;
 
-                string newInstructionAsBinary;
+                string newInstructionAsMachineCode;
 
                 foreach (string assemblyInstruction in assemblyInstructions)
                 {
                     newInstruction = GetInstructionFromAssemblyCommand(assemblyInstruction);
 
-                    newInstructionAsBinary = newInstruction.GetInstructionAsBinary();
+                    newInstructionAsMachineCode = newInstruction.GetInstructionAsMachineCode();
 
-                    binaryInstructionArray.Add(newInstructionAsBinary);
+                    machineCodeInstructionArray.Add(newInstructionAsMachineCode);
 
                     lineNumber++;
                 }
 
-                return binaryInstructionArray.ToArray();
+                return machineCodeInstructionArray.ToArray();
             }
             catch (Exception e)
             {

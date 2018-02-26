@@ -11,6 +11,6 @@ namespace HackAssembler
             this.instructionElement = instructionElement;
         }
 
-        public abstract string GetBinary();
+        public abstract string GetMachineCode();
     }
 }

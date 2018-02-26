@@ -4,9 +4,9 @@
     {
         public ComputationInstructionElement(string instruction) : base(instruction) { }
 
-        public override string GetBinary()
+        public override string GetMachineCode()
         {
-            return Translator.GetBinaryComputationInstruction(this.instructionElement);
+            return Translator.GetComputationInstructionAsMachineCode(this.instructionElement);
         }
     }
 }

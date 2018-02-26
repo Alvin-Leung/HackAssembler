@@ -4,9 +4,9 @@
     {
         public JumpInstructionElement(string instruction) : base(instruction) { }
 
-        public override string GetBinary()
+        public override string GetMachineCode()
         {
-            return Translator.GetBinaryJumpInstruction(this.instructionElement);
+            return Translator.GetJumpInstructionAsMachineCode(this.instructionElement);
         }
     }
 }

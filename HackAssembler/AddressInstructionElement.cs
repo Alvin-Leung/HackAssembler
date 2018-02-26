@@ -4,9 +4,9 @@
     {
         public AddressInstructionElement(string instruction) : base(instruction) { }
 
-        public override string GetBinary()
+        public override string GetMachineCode()
         {
-            return Translator.GetBinaryAddressInstruction(this.instructionElement);
+            return Translator.GetAddressInstructionAsMachineCode(this.instructionElement);
         }
     }
 }

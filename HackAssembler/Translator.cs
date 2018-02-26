@@ -70,18 +70,18 @@ namespace HackAssembler
             };
         }
 
-        static public string GetBinaryAddressInstruction(string address)
+        static public string GetAddressInstructionAsMachineCode(string address)
         {
             int addressAsInteger = Int32.Parse(address);
 
-            string addressAsBinaryString = Convert.ToString(addressAsInteger, 2);
+            string addressAsMachineCode = Convert.ToString(addressAsInteger, 2);
 
-            string aInstruction = addressAsBinaryString.PadLeft(16, '0');
+            string aInstructionInMachineCode = addressAsMachineCode.PadLeft(16, '0');
 
-            return aInstruction;
+            return aInstructionInMachineCode;
         }
 
-        static public string GetBinaryDestinationInstruction(string destinationInstruction)
+        static public string GetDestinationInstructionAsMachineCode(string destinationInstruction)
         {
             if (Translator.destinationInstructionDictionary.ContainsKey(destinationInstruction))
             {
@@ -93,7 +93,7 @@ namespace HackAssembler
             }
         }
 
-        static public string GetBinaryComputationInstruction(string computationInstruction)
+        static public string GetComputationInstructionAsMachineCode(string computationInstruction)
         {
             if (Translator.computationInstructionDictionary.ContainsKey(computationInstruction))
             {
@@ -105,7 +105,7 @@ namespace HackAssembler
             }
         }
 
-        static public string GetBinaryJumpInstruction(string jumpInstruction)
+        static public string GetJumpInstructionAsMachineCode(string jumpInstruction)
         {
             if (Translator.jumpInstructionDictionary.ContainsKey(jumpInstruction))
             {
@@ -117,16 +117,16 @@ namespace HackAssembler
             }
         }
 
-        static public string GetCompleteBinaryInstruction(Queue<InstructionElement> instructionElementQueue)
+        static public string GetCompleteMachineCodeInstruction(Queue<InstructionElement> instructionElementQueue)
         {
-            string binaryInstruction = String.Empty;
+            string instructionInMachineCode = String.Empty;
 
             foreach (InstructionElement instructionElement in instructionElementQueue)
             {
-                binaryInstruction += instructionElement.GetBinary();
+                instructionInMachineCode += instructionElement.GetMachineCode();
             }
 
-            return binaryInstruction;
+            return instructionInMachineCode;
         }
     }
 }

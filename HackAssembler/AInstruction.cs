@@ -20,11 +20,11 @@ namespace HackAssembler
             return instructionElementQueue;
         }
 
-        public string GetInstructionAsBinary()
+        public string GetInstructionAsMachineCode()
         {
             Queue<InstructionElement> instructionElementQueue = GetInstructionElementQueue();
 
-            return Translator.GetCompleteBinaryInstruction(instructionElementQueue);
+            return Translator.GetCompleteMachineCodeInstruction(instructionElementQueue);
         }
     }
 }

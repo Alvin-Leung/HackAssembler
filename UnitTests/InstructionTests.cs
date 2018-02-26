@@ -11,7 +11,7 @@ namespace UnitTests
         {
             AInstruction aInstruction = new AInstruction("4578");
 
-            Assert.AreEqual("0001000111100010", aInstruction.GetInstructionAsBinary());
+            Assert.AreEqual("0001000111100010", aInstruction.GetInstructionAsMachineCode());
         }
 
         [TestMethod]
@@ -19,7 +19,7 @@ namespace UnitTests
         {
             CInstruction cInstruction = new CInstruction("M", "M+1", "JMP");
 
-            Assert.AreEqual("1111110111001111", cInstruction.GetInstructionAsBinary());
+            Assert.AreEqual("1111110111001111", cInstruction.GetInstructionAsMachineCode());
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace UnitTests
         {
             CInstruction cInstruction = new CInstruction("AM", "D&M", "JLE");
 
-            Assert.AreEqual("1111000000101110", cInstruction.GetInstructionAsBinary());
+            Assert.AreEqual("1111000000101110", cInstruction.GetInstructionAsMachineCode());
         }
     }
 }
