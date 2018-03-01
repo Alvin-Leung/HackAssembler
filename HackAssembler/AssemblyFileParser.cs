@@ -14,7 +14,7 @@ namespace HackAssembler
         {
             if (File.Exists(filepath))
             {
-                this.SaveFileLinesToList(filepath);
+                this.SaveAssemblyCommandLinesToList(filepath);
             }
             else
             {
@@ -27,7 +27,7 @@ namespace HackAssembler
             return assemblyInstructions.ToArray();
         }
 
-        private void SaveFileLinesToList(string filepath)
+        private void SaveAssemblyCommandLinesToList(string filepath)
         {
             string newLine;
 
@@ -37,6 +37,10 @@ namespace HackAssembler
                 {
                     newLine = streamReader.ReadLine();
 
+                    newLine = RemoveInlineComments(newLine);
+
+                    newLine = RemoveWhitespacePadding(newLine);
+
                     if (!IsWhitespace(newLine))
                     {
                         assemblyInstructions.Add(newLine);
@@ -45,23 +49,28 @@ namespace HackAssembler
             }
         }
 
-        private bool IsWhitespace(string line)
+        private string RemoveInlineComments(string line)
         {
-            if (line == String.Empty || line.StartsWith(commentIndicator) || IsAllSpaces(line))
+            int indexOfCommentStart;
+
+            if (line.Contains(commentIndicator))
             {
-                return true;
+                indexOfCommentStart = line.IndexOf(commentIndicator);
+
+                line = line.Remove(indexOfCommentStart);
             }
-            else
-            {
-                return false;
-            }
+
+            return line;
         }
 
-        private bool IsAllSpaces(string line)
+        private string RemoveWhitespacePadding(string line)
         {
-            string lineWithSpacesRemoved = line.Trim();
+            return line.Trim(' ');
+        }
 
-            if (lineWithSpacesRemoved.Length == 0)
+        private bool IsWhitespace(string line)
+        {
+            if (line == String.Empty || line.StartsWith(commentIndicator))
             {
                 return true;
             }
