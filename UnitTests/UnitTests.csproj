@@ -53,6 +53,7 @@
     <Compile Include="TranslatorTests.cs" />
     <Compile Include="InstructionTests.cs" />
     <Compile Include="SymbolTableTests.cs" />
+    <Compile Include="SyntaxValidatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
