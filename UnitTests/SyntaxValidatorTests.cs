@@ -23,17 +23,17 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void IsAddressInstructionWithLabel_InputValidAddressInstructionWithLabel_ReturnTrue()
+        public void IsAddressInstructionWithSymbol_InputValidAddressInstructionWithSymbol_ReturnTrue()
         {
-            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithLabel("@R0");
+            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithSymbol("@R0");
             
             Assert.AreEqual(true, isAddressInstructionWithLabel);
         }
 
         [TestMethod]
-        public void IsAddressInstructionWithLabel_InputInvalidAddressInstructionWithLabel_ReturnTrue()
+        public void IsAddressInstructionWithSymbol_InputInvalidAddressInstructionWithSymbol_ReturnFalse()
         {
-            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithLabel("@1InvalidLabel");
+            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithSymbol("@1InvalidLabel");
 
             Assert.AreEqual(false, isAddressInstructionWithLabel);
         }
@@ -47,7 +47,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void IsComputationInstruction_InputInvalidComputationInstruction_ReturnTrue()
+        public void IsComputationInstruction_InputInvalidComputationInstruction_ReturnFalse()
         {
             bool isComputationInstrucation = SyntaxValidator.IsComputationInstruction("D=SCREEN");
 
@@ -63,7 +63,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void IsLabel_InputInvalidLabel_ReturnTrue()
+        public void IsLabel_InputInvalidLabel_ReturnFalse()
         {
             bool isLabel = SyntaxValidator.IsLabel("D=D+1");
 

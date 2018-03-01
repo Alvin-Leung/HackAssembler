@@ -6,7 +6,7 @@ namespace HackAssembler
     {
         static private Regex addressCommandRegex;
 
-        static private Regex addressCommandWithLabelRegex;
+        static private Regex addressCommandWithSymbolRegex;
 
         static private Regex destCompJumpCommandRegex;
 
@@ -22,7 +22,7 @@ namespace HackAssembler
         {
             string addressCommandRegexPattern = @"@\d+";
 
-            string addressCommandWithLabelRegexPattern = @"@[A-z]\w*";
+            string addressCommandWithSymbolRegexPattern = @"@[A-z]\w*";
 
             string destinationRegexPattern = @"(M|D|MD|A|AM|AD|AMD)";
 
@@ -42,7 +42,7 @@ namespace HackAssembler
 
             addressCommandRegex = new Regex(addressCommandRegexPattern);
 
-            addressCommandWithLabelRegex = new Regex(addressCommandWithLabelRegexPattern);
+            addressCommandWithSymbolRegex = new Regex(addressCommandWithSymbolRegexPattern);
 
             destCompJumpCommandRegex = new Regex(
                 destinationRegexPattern +
@@ -71,9 +71,9 @@ namespace HackAssembler
             return addressCommandRegex.IsMatch(assemblyCommand);
         }
 
-        static public bool IsAddressInstructionWithLabel(string assemblyCommand)
+        static public bool IsAddressInstructionWithSymbol(string assemblyCommand)
         {
-            return addressCommandWithLabelRegex.IsMatch(assemblyCommand);
+            return addressCommandWithSymbolRegex.IsMatch(assemblyCommand);
         }
 
         static public bool IsComputationInstruction(string assemblyCommand)
