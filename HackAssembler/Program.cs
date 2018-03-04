@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HackAssembler
+﻿namespace HackAssembler
 {
     class Program
     {
         static void Main(string[] args)
         {
+            AssemblerConsole.DisplayIntroductoryMessage();
 
+            string filepath = AssemblerConsole.GetValidFilepathFromUser();
+
+            Assembler.TryConvertAsmToHack(filepath);
+
+            AssemblerConsole.DisplayExitMessage();
         }
     }
 }
