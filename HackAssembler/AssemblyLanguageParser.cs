@@ -7,7 +7,11 @@ namespace HackAssembler
     {
         static public string[] GetMachineCodeArray(string[] assemblyInstructions)
         {
-            int lineNumber = 1;
+            SymbolHandler symbolHandler = new SymbolHandler(assemblyInstructions);
+
+            assemblyInstructions = symbolHandler.SubstituteSymbolsWithValues(assemblyInstructions);
+
+            int lineNumber = 0;
 
             try
             {
@@ -19,13 +23,16 @@ namespace HackAssembler
 
                 foreach (string assemblyInstruction in assemblyInstructions)
                 {
-                    newInstruction = GetInstructionFromAssemblyCommand(assemblyInstruction);
+                    if (!SyntaxValidator.IsLabel(assemblyInstruction))
+                    {
+                        newInstruction = GetInstructionFromAssemblyCommand(assemblyInstruction);
 
-                    newInstructionAsMachineCode = newInstruction.GetInstructionAsMachineCode();
+                        newInstructionAsMachineCode = newInstruction.GetInstructionAsMachineCode();
 
-                    machineCodeInstructionArray.Add(newInstructionAsMachineCode);
+                        machineCodeInstructionArray.Add(newInstructionAsMachineCode);
 
-                    lineNumber++;
+                        lineNumber++;
+                    }
                 }
 
                 return machineCodeInstructionArray.ToArray();
