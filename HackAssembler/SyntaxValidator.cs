@@ -20,9 +20,11 @@ namespace HackAssembler
 
         static SyntaxValidator()
         {
+            string startOfStringAnchor = "^";
+
             string addressCommandRegexPattern = @"@\d+";
 
-            string addressCommandWithSymbolRegexPattern = @"@[A-z]\w*";
+            string addressCommandWithSymbolRegexPattern = @"@[A-z]\S*";
 
             string destinationRegexPattern = @"(M|D|MD|A|AM|AD|AMD)";
 
@@ -38,32 +40,50 @@ namespace HackAssembler
 
             string endOfLineAnchor = "$";
 
-            string labelRegexPattern = @"\([A-z]\w*\)";
+            string labelRegexPattern = @"\([A-z]\S*\)";
 
-            addressCommandRegex = new Regex(addressCommandRegexPattern);
+            addressCommandRegex = new Regex(
+                startOfStringAnchor + 
+                addressCommandRegexPattern +
+                endOfLineAnchor);
 
-            addressCommandWithSymbolRegex = new Regex(addressCommandWithSymbolRegexPattern);
+            addressCommandWithSymbolRegex = new Regex(
+                startOfStringAnchor + 
+                addressCommandWithSymbolRegexPattern +
+                endOfLineAnchor);
 
             destCompJumpCommandRegex = new Regex(
+                startOfStringAnchor + 
                 destinationRegexPattern +
                 equalSignRegexPattern +
                 computationRegexPattern +
                 semicolonRegexPattern +
-                jumpRegexPattern);
+                jumpRegexPattern +
+                endOfLineAnchor);
 
             destCompCommandRegex = new Regex(
+                startOfStringAnchor +
                 destinationRegexPattern +
                 equalSignRegexPattern +
-                computationRegexPattern);
+                computationRegexPattern +
+                endOfLineAnchor);
 
             compJumpCommandRegex = new Regex(
+                startOfStringAnchor +
                 computationRegexPattern +
                 semicolonRegexPattern +
-                jumpRegexPattern);
+                jumpRegexPattern +
+                endOfLineAnchor);
 
-            compCommandRegex = new Regex(computationRegexPattern + endOfLineAnchor);
+            compCommandRegex = new Regex(
+                startOfStringAnchor + 
+                computationRegexPattern + 
+                endOfLineAnchor);
 
-            labelRegex = new Regex(labelRegexPattern);
+            labelRegex = new Regex(
+                startOfStringAnchor + 
+                labelRegexPattern + 
+                endOfLineAnchor);
         }
 
         static public bool IsAddressInstruction(string assemblyCommand)
