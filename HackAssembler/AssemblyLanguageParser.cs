@@ -13,9 +13,11 @@ namespace HackAssembler
             {
                 SymbolHandler symbolHandler = new SymbolHandler(assemblyInstructions);
 
+                Console.WriteLine("Labels saved to symbol table...");
+
                 assemblyInstructions = symbolHandler.SubstituteSymbolsWithValues(assemblyInstructions);
 
-                Console.WriteLine("Symbols loaded successfully...");
+                Console.WriteLine("Symbol to value substitution complete...");
 
                 List<string> machineCodeInstructionArray = new List<string>();
 
@@ -36,6 +38,8 @@ namespace HackAssembler
                         lineNumber++;
                     }
                 }
+
+                Console.WriteLine("Assembly language converted to machine code...");
 
                 return machineCodeInstructionArray.ToArray();
             }

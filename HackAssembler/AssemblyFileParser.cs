@@ -47,6 +47,8 @@ namespace HackAssembler
                     }
                 }
             }
+
+            Console.WriteLine(Environment.NewLine + "Assembly file parsed...");
         }
 
         private string RemoveInlineComments(string line)

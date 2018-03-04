@@ -23,11 +23,7 @@ namespace HackAssembler
 
             string[] assemblyInstructions = assemblyFileParser.GetArrayOfAssemblyInstructions();
 
-            Console.WriteLine("Assembly file parsed successfully...");
-
             string[] machineCodeInstructions = AssemblyLanguageParser.GetMachineCodeArray(assemblyInstructions);
-
-            Console.WriteLine("Assembly language converted to machine code successfully...");
 
             FileInfo fileInfo = new FileInfo(filepath);
 
@@ -37,7 +33,7 @@ namespace HackAssembler
 
             machineCodeStreamWriter.WriteToFile(machineCodeInstructions);
 
-            Console.WriteLine("Machine code file generation complete");
+            Console.WriteLine("Machine code file saved to the following location: " + machineCodeFilePath);
         }
     }
 }
