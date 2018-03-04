@@ -15,6 +15,22 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void IsAddressInstruction_InputAddressInstructionWithLeftWhitespacePadding_ReturnFalse()
+        {
+            bool isAddressInstruction = SyntaxValidator.IsAddressInstruction("    @1234");
+
+            Assert.AreEqual(false, isAddressInstruction);
+        }
+
+        [TestMethod]
+        public void IsAddressInstruction_InputAddressInstructionWithRightWhitespacePadding_ReturnFalse()
+        {
+            bool isAddressInstruction = SyntaxValidator.IsAddressInstruction("@1234     ");
+
+            Assert.AreEqual(false, isAddressInstruction);
+        }
+
+        [TestMethod]
         public void IsAddressInstruction_InputInvalidAddressInstruction_ReturnFalse()
         {
             bool isAddressInstruction = SyntaxValidator.IsAddressInstruction("@InvalidAddressInstruction");
@@ -28,6 +44,22 @@ namespace UnitTests
             bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithSymbol("@R0");
             
             Assert.AreEqual(true, isAddressInstructionWithLabel);
+        }
+
+        [TestMethod]
+        public void IsAddressInstructionWithSymbol_InputAddressInstructionWithSymbolAndLeftWhitespacePadding_ReturnFalse()
+        {
+            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithSymbol("    @R0");
+
+            Assert.AreEqual(false, isAddressInstructionWithLabel);
+        }
+
+        [TestMethod]
+        public void IsAddressInstructionWithSymbol_InputAddressInstructionWithSymbolAndRightWhitespacePadding_ReturnFalse()
+        {
+            bool isAddressInstructionWithLabel = SyntaxValidator.IsAddressInstructionWithSymbol("@R0           ");
+
+            Assert.AreEqual(false, isAddressInstructionWithLabel);
         }
 
         [TestMethod]
