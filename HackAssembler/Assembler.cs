@@ -9,8 +9,6 @@ namespace HackAssembler
         {
             try
             {
-                FileInfo fileInfo = new FileInfo(filepath);
-
                 ConvertAsmToHack(filepath);
             }
             catch (Exception e)
