@@ -7,14 +7,16 @@ namespace HackAssembler
     {
         static public string[] GetMachineCodeArray(string[] assemblyInstructions)
         {
-            SymbolHandler symbolHandler = new SymbolHandler(assemblyInstructions);
-
-            assemblyInstructions = symbolHandler.SubstituteSymbolsWithValues(assemblyInstructions);
-
             int lineNumber = 0;
 
             try
             {
+                SymbolHandler symbolHandler = new SymbolHandler(assemblyInstructions);
+
+                assemblyInstructions = symbolHandler.SubstituteSymbolsWithValues(assemblyInstructions);
+
+                Console.WriteLine("Symbols loaded successfully...");
+
                 List<string> machineCodeInstructionArray = new List<string>();
 
                 Instruction newInstruction;
