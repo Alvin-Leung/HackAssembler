@@ -45,6 +45,7 @@
     <Compile Include="AddressInstructionElement.cs" />
     <Compile Include="AInstruction.cs" />
     <Compile Include="Assembler.cs" />
+    <Compile Include="AssemblerConsole.cs" />
     <Compile Include="MachineCodeStreamWriter.cs" />
     <Compile Include="CInstruction.cs" />
     <Compile Include="ComputationInstructionElement.cs" />
