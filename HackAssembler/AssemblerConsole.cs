@@ -23,10 +23,6 @@ namespace HackAssembler
 
         static public string GetValidFilepathFromUser()
         {
-            string expectedInputFileExtension = ".asm";
-
-            FileInfo fileInfo;
-
             string filepath;
 
             bool fileExists;
@@ -43,23 +39,17 @@ namespace HackAssembler
 
                 if (!fileExists)
                 {
-                    Console.WriteLine("File does not exist. Please try again.");
-
                     fileIsAsm = false;
+
+                    Console.WriteLine("File does not exist. Please try again.");
                 }
                 else
                 {
-                    fileInfo = new FileInfo(filepath);
+                    fileIsAsm = IsFileAsm(filepath);
 
-                    if (fileInfo.Extension != expectedInputFileExtension)
+                    if (!fileIsAsm)
                     {
-                        Console.WriteLine("File is not in the correct format. Please input the path for an .asm file.");
-
-                        fileIsAsm = false;
-                    }
-                    else
-                    {
-                        fileIsAsm = true;
+                        Console.WriteLine("File does not have the correct extension. Please input the path for an .asm file.");
                     }
                 }
             }
@@ -77,6 +67,26 @@ namespace HackAssembler
             Console.WriteLine("Press enter to exit...");
 
             Console.ReadLine();
+        }
+
+        static private bool IsFileAsm(string filepath)
+        {
+            FileInfo fileInfo = new FileInfo(filepath);
+
+            string expectedInputFileExtension = ".asm";
+
+            bool fileIsAsm;
+
+            if (fileInfo.Extension != expectedInputFileExtension)
+            {
+                fileIsAsm = false;
+            }
+            else
+            {
+                fileIsAsm = true;
+            }
+
+            return fileIsAsm;
         }
     }
 }
