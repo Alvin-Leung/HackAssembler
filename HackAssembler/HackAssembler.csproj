@@ -55,6 +55,7 @@
     <Compile Include="AssemblyLanguageParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SymbolHandler.cs" />
     <Compile Include="SymbolTable.cs" />
     <Compile Include="SyntaxValidator.cs" />
     <Compile Include="Translator.cs" />
